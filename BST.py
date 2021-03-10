@@ -95,6 +95,8 @@ tree.walk_tree()
 
 tree.walk_tree()
 
+
+#the next line of code will be like a menu for the user (the options are in spanish)
 """ 
 while True:
     print('Árbol Binario')
