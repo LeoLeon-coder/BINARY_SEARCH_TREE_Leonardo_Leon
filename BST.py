@@ -65,10 +65,11 @@ class BinarySearchTree:
         print('Orderly.')
         if self.root:
             self.sort(self.root)
+        print()
     
     def sort(self, cur_node):
         if cur_node:
-            self.orden(cur_node.left)
+            self.sort(cur_node.left)
             print(cur_node.data, end=' ')
             self.sort(cur_node.right)
             
