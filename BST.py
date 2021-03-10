@@ -73,9 +73,46 @@ class BinarySearchTree:
             print(cur_node.data, end=' ')
             self.sort(cur_node.right)
             
-    #---------------------------------------------
-    #create a function to delete data in the tree
-    #---------------------------------------------
+    def delete_data(self, data):
+        #data = input()
+        result = self.seek(data, self.root)
+        if result:
+            self.delete(result)
+        else:
+            print(data, 'was not in the tree.')
+    
+    def delete(self, cur_node):
+        inheritor = self.find_inheritor(cur_node)
+        if inheritor:
+            cur_node.data = inheritor.data
+            self.delete(inheritor)
+        else:
+            self.notify_dad(cur_node)
+
+    def find_inheritor(self, cur_node):
+        if cur_node.right:
+            p = cur_node.right
+            while p.left is not None:
+                p = p.left
+            return p
+        elif cur_node.left:
+            p = cur_node.left
+            while p.right is not None:
+                p = p.right
+            return p
+        else:
+            return None
+
+    def notify_dad(self, cur_node):
+        if cur_node.data:
+            dad = cur_node.data
+            if cur_node is cur_node.right:
+                cur_node.right = None
+            else:
+                cur_node.left = None
+        else:
+            self.root = None
+        del cur_node
     
 
   
