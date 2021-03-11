@@ -72,6 +72,12 @@ class BinarySearchTree:
             self.sort(cur_node.left)
             print(cur_node.data, end=' ')
             self.sort(cur_node.right)
+          
+    #----------------------------------------------------------
+    #It does not work well
+    #----------------------------------------------------------
+    #the function deletes the element but just then the sort function gives a traceback
+    
             
     def delete_data(self, data):
         #data = input()
@@ -80,7 +86,7 @@ class BinarySearchTree:
             self.delete(result)
         else:
             print(data, 'was not in the tree.')
-    
+
     def delete(self, cur_node):
         inheritor = self.find_inheritor(cur_node)
         if inheritor:
@@ -128,7 +134,7 @@ tree.add_data(1)
 
 tree.walk_tree()
 
-#tree.delete_data(7)
+tree.delete_data(7)
 
 tree.walk_tree()
 
